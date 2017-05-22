@@ -1,6 +1,7 @@
 import express from 'express'
 import bodyParser from 'body-parser';
 import SourceMapSupport from 'source-map-support';
+import feedbackRoutes from './routes/feedbackRoutes';
 SourceMapSupport.install();
 
 const app=express();
