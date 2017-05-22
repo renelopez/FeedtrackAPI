@@ -1,0 +1,27 @@
+{
+  "name": "feedtrackapi",
+  "version": "1.0.0",
+  "description": "An API that provides feedback data for people",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon -w dist dist/server.js",
+    "lint": "lint server",
+    "compile-server": "babel-node server --presets es2015-node6 --out-dir dist --source-maps",
+    "watch-server": "babel-node server --presets es2015-node6 --out-dir dist --source-maps --watch",
+    "dev-all": "npm run watch-server & npm start"
+  },
+  "author": "Rene Lopez",
+  "license": "ISC",
+  "dependencies": {
+    "babel-polyfill": "^6.23.0",
+    "body-parser": "^1.17.2",
+    "express": "^4.15.3",
+    "source-map-support": "^0.4.15"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-preset-es2015-node6": "^0.4.0",
+    "eslint-config-airbnb": "^15.0.1",
+    "nodemon": "^1.11.0"
+  }
+}
