@@ -1,14 +1,9 @@
-import express from 'express';
+const buildFeedbackRoutes = (expressInstance) => {
+  const router = expressInstance.Router();
 
-const buildFeedbackRoutes=(dbInstance)=>{
-    const router = express.Router();
+  router.get('/feedbacks', () => {
 
-    router.get('/feedbacks',() => {
-
-    });
+  });
 };
 
 export default buildFeedbackRoutes;
-
-
-
