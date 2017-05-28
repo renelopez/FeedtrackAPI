@@ -7,6 +7,6 @@ const feedbackSchema = mongoose.Schema({
   rating: Number,
 });
 
-const feedbackModel = mongoose.Model('Feedback', feedbackSchema);
+const feedbackModel = mongoose.model('Feedback', feedbackSchema);
 
 export default feedbackModel;

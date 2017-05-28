@@ -1,24 +1,16 @@
 import express from 'express';
-import bodyParser from 'body-parser';
-import mongoose from 'mongoose';
-import SourceMapSupport from 'source-map-support';
-import feedbackRoutes from './routes/feedbackRoutes';
-
-SourceMapSupport.install();
-mongoose.connect('mongodb://localhost/feedtrack');
+import configRoutes from './routes/feedbackRoutes';
+import appConfig from './config/app.config'
+import configMongoose from './config/mongoose.config'
 
 const app = express();
-feedbackRoutes(app);
 
+const env = process.env.NODE_ENV = process.env.NODE_ENV || 'development';
+const appSettings=appConfig[env];
 
+configMongoose(appSettings);
+configRoutes(app);
 
-
-app.use(express.static('static'));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({
-  extended: true,
-}));
-
-app.listen(3000, () => {
+app.listen(appSettings.port, () => {
     console.log('Feedtrack API running on port 3000');
 });

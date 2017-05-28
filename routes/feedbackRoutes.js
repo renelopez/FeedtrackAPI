@@ -1,8 +1,14 @@
-const buildFeedbackRoutes = (expressInstance) => {
-  const router = expressInstance.Router();
+import Feedback from '../models/feedbackModel'
 
-  router.get('/feedbacks', () => {
 
+const buildFeedbackRoutes = (app) => {
+  app.get('/feedbacks', (req,res) => {
+    Feedback.find((err,data) =>{
+        if (err) {
+            res.json({info: 'error during finding feedbacks', error: err});
+        };
+        res.json({info: 'Feedbacks found successfully', data: data});
+    })
   });
 };
 
