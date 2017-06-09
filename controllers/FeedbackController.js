@@ -10,6 +10,20 @@ const getAll = (req, res) => {
     })
 };
 
+const getFeedbackById = (req, res) => {
+    Feedback.findById(req.params.id, (err, feedback) => {
+        if (err) {
+            res.json({info: 'error during finding feedbacks', error: err});
+        }
+        if (feedback) {
+            res.json({info: 'Feedback found successfully', data: feedback});
+        }
+        else {
+            res.json({info: 'Feedback wasnt found'});
+        }
+    })
+};
+
 const createFeedback = (req, res) => {
     let newFeedback = new Feedback(req.body);
     console.log(req.body);
@@ -23,4 +37,4 @@ const createFeedback = (req, res) => {
 };
 
 
-export {getAll, createFeedback};
+export {getAll, createFeedback, getFeedbackById};
