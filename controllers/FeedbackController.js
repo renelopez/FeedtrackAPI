@@ -36,5 +36,20 @@ const createFeedback = (req, res) => {
     })
 };
 
+const updateFeedback = (req,res) => {
+    Feedback.findById(req.params.id, (err, feedback) => {
+        if (err) {
+            res.json({info: 'error during finding feedbacks', error: err});
+        }
+        if (feedback) {
+            let editedFeedback=Object.assign({},feedback.req.body);
+            res.json({info: 'Feedback edited successfully', data: editedFeedback});
+        }
+        else {
+            res.json({info: 'Feedback wasnt found'});
+        }
+    })
+}
 
-export {getAll, createFeedback, getFeedbackById};
+
+export {getAll, createFeedback, getFeedbackById,updateFeedback};
